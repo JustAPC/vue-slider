@@ -12,17 +12,25 @@
 <body>
     
     <div id="root">
-        <div class="container text-center d-flex x-y-center pt-5">
+        <div id="container" class="container text-center d-flex x-y-center">
+            
             <div class="d-flex x-y-center">
-                <button class="arrow-buttons"><i class="fa-solid fa-angle-left fs-1"></i></button>
+                <button class="arrow-buttons" @click="leftSlide()"><i class="fa-solid fa-angle-left fs-1"></i></button>
             </div>
-            <div class="d-flex">
-                <img v-for="element in immagini" v-bind:src="element.img" v-if="element.shown" class="mx-auto w-75">
+            <div class="d-flex img-size">
+                <img v-bind:src="immagini[index]" class="mx-auto w-75 fading">
             </div>
             <div class="d-flex x-y-center">
-                <button class="arrow-buttons"><i class="fa-solid fa-angle-right fs-1"></i></button>
+                <button class="arrow-buttons" @click="rightSlide()"><i class="fa-solid fa-angle-right fs-1"></i></button>
             </div>
 
+
+            <div class="dot-container d-flex mx-auto">
+                <div class="mx-auto x-y-center dot"></div>
+                <div class="mx-auto x-y-center dot"></div>
+                <div class="mx-auto x-y-center dot"></div>
+                <div class="mx-auto x-y-center dot"></div>
+            </div>
         </div>
     </div>
 
