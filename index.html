@@ -18,7 +18,7 @@
                 <button class="arrow-buttons" @click="leftSlide()"><i class="fa-solid fa-angle-left fs-1"></i></button>
             </div>
             <div class="d-flex img-size">
-                <img v-bind:src="immagini[index]" class="mx-auto w-75 fading">
+                <img v-bind:src="immagini[counter]" class="mx-auto w-75 fading">
             </div>
             <div class="d-flex x-y-center">
                 <button class="arrow-buttons" @click="rightSlide()"><i class="fa-solid fa-angle-right fs-1"></i></button>
@@ -26,10 +26,10 @@
 
 
             <div class="dot-container d-flex mx-auto">
-                <div class="mx-auto x-y-center dot"></div>
-                <div class="mx-auto x-y-center dot"></div>
-                <div class="mx-auto x-y-center dot"></div>
-                <div class="mx-auto x-y-center dot"></div>
+                <div class="mx-auto x-y-center dot" 
+                :class="(index == counter) ? 'active-dot' : '' " 
+                v-for="(photo, index) in immagini" @click="dotClick(index)">
+            </div>
             </div>
         </div>
     </div>

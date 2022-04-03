@@ -8,25 +8,38 @@ var app = new Vue(
                 'https://images.pexels.com/photos/6992/forest-trees-northwestisbest-exploress.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
                 'https://images.pexels.com/photos/2440024/pexels-photo-2440024.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
             ],
-            index : 0
+            counter : 0
         },
 
+        created () {
+            this.loopStart ()
+        },
 
         methods: {
-            rightSlide () {
-                if (this.index < this.immagini.length) {
-                    this.index++
+            rightSlide : function () {
+                if (this.counter < this.immagini.length - 1) {
+                    this.counter++
                 } else {
-                    this.index = 0;
+                    this.counter = 0;
                 }
             },
 
-            leftSlide () {
-                if (this.index > 0) {
-                    this.index--
+            leftSlide : function () {
+                if (this.counter > 0) {
+                    this.counter--
                 } else {
-                    this.index = this.immagini.length -1;
+                    this.counter = this.immagini.length -1;
                 }
+            },
+
+            loopStart : function () {
+                setInterval(() => {
+                    this.rightSlide ();
+                }, 3000);
+            },
+
+            dotClick : function (photoIndex) {
+                this.counter = photoIndex;
             }
         },
     }
